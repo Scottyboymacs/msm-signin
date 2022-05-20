@@ -57,4 +57,12 @@ class DirectorsController < ApplicationController
 
     redirect_to("/directors", { :notice => "Director deleted successfully."} )
   end
+
+  def min_dob
+    directors_by_dob_asc = Director.all.where.not({ :dob => nil }).order({ :dob => :asc })
+      
+    @eldest = directors_by_dob_asc.at(0)
+
+    render({ :template => "director_templates/eldest" })
+  end
 end
