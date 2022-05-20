@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  # Homepage
+
+  get("/", { :controller => "application", :action => "homepage" })
+  
+  
   # Routes for the Bookmark resource:
 
   # CREATE
