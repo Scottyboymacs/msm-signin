@@ -21,10 +21,9 @@
     </form>
 
     <% else %>
-        <form action="/delete_bookmark/<%=current_user_bookmark.first.id%>" method="post">
-        <button class="btn btn-block btn-outline-secondary">
+        <a href = "/delete_bookmark/<%=current_user_bookmark.first.id%>">
         Un-bookmark
-      </button>
+      </a>
     </form>
     <%end%>
 
