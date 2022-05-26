@@ -10,8 +10,8 @@
           Go back
         </a>
       </div>
-
-  <% if Bookmark.where({ :movie_id => @the_movie.id,  :user_id => session[:user_id] }).count == 0%>
+  <% current_user_bookmark = Bookmark.where({ :movie_id => @the_movie.id,  :user_id => session[:user_id] }) %>
+  <% if current_user_bookmark.count == 0 %>
     <form action="/insert_bookmark" method="post">
       <input type="hidden" value= <%=@the_movie.id%> id="movie_id_box" name="query_movie_id" class="form-control">
 
@@ -21,7 +21,7 @@
     </form>
 
     <% else %>
-        <form action="/delete_bookmark/<%=@the_movie.id%>" method="post">
+        <form action="/delete_bookmark/<%=current_user_bookmark.first.id%>" method="post">
         <button class="btn btn-block btn-outline-secondary">
         Un-bookmark
       </button>
