@@ -18,7 +18,7 @@
   <nav>
     <ul>
       <li>
-        <a href = "/sign_in">
+        <a href = "/user_sign_in">
          Sign in 
         </a>
       </li>
@@ -46,7 +46,12 @@
       <%= alert %>
     </div>
     <%end%>
-    
+        <% if session[:user_id].present? %>
+    <div>
+      <a href = "/user_sign_out">Sign Out</a>
+    </div>
+    <%end%>
+
     <%= yield %>
   </body>
 </html>
