@@ -68,6 +68,7 @@
       </tr>
 
       <% @list_of_bookmarks.each do |a_bookmark| %>
+      <% if a_bookmark.user.id == session[:user_id] %>
       <tr>
         <td>
           <%= a_bookmark.id %>
@@ -95,6 +96,8 @@
         </td>
       </tr>
       <% end %>
+      <% end %>
+
     </table>
   </div>
 </div>
