@@ -13,28 +13,26 @@
     <h2>
       Add a new bookmark
     </h2>
+  </div>
+</div>
 
-    <form action="/insert_bookmark" method="post">
-      <div>
-        <label for="user_id_box">
-          User
-        </label>
-
-        <input type="text" id="user_id_box" name="query_user_id">
-      </div>
-
-      <div>
-        <label for="movie_id_box">
-          Movie
-        </label>
-
-        <input type="text" id="movie_id_box" name="query_movie_id">
-      </div>
+<div>
+  <div>
+<form action="/insert_bookmark" method="post">
+  <select name="query_movie_id" id="movie_id_box">
+  <% @list_of_bookmarks.order({ :id => :asc }).each do |a_bookmark| %>
+  <% the_movie = Movie.where({ :id => a_bookmark.movie_id }).first %>
+  <% #if a_bookmark.user.id != session[:user_id] %>
+     <option value= <%=the_movie.id%>>
+      <%= the_movie.title%>
+     </option>
 
       <button>
         Create bookmark
       </button>
-    </form>
+    <%end%>
+</form>
+    <%#end%>
   </div>
 </div>
 
