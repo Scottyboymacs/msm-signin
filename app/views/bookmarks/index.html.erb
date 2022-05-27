@@ -44,7 +44,7 @@
     <table border="1">
       <tr>
         <th>
-          ID
+          Title
         </th>
 
         <th>
@@ -56,11 +56,6 @@
         </th>
 
         <th>
-          Created at
-        </th>
-
-        <th>
-          Updated at
         </th>
 
         <th>
@@ -68,18 +63,13 @@
       </tr>
 
       <% @list_of_bookmarks.each do |a_bookmark| %>
+      <% the_movie = Movie.where({ :id => a_bookmark.movie_id }).first %>
+
       <% if a_bookmark.user.id == session[:user_id] %>
       <tr>
-        <td>
-          <%= a_bookmark.id %>
-        </td>
 
         <td>
-          <%= a_bookmark.user_id %>
-        </td>
-
-        <td>
-          <%= a_bookmark.movie_id %>
+          <a href= "/movies/<%=the_movie.id%>"><%= the_movie.title %></a>
         </td>
 
         <td>
@@ -90,9 +80,7 @@
         </td>
 
         <td>
-          <a href="/bookmarks/<%= a_bookmark.id %>">
-            Show details
-          </a>
+          <a href= "/delete_bookmark/<%=a_bookmark.id%>">Un-bookmark</a>
         </td>
       </tr>
       <% end %>

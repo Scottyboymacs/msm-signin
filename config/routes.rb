@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   post("/modify_bookmark/:path_id", { :controller => "bookmarks", :action => "update" })
   
   # DELETE
-  post("/delete_bookmark/:path_id", { :controller => "bookmarks", :action => "destroy" })
+  get("/delete_bookmark/:path_id", { :controller => "bookmarks", :action => "destroy" })
 
   #------------------------------
 
